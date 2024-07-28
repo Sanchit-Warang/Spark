@@ -5,6 +5,14 @@ const port = 8080;
 
 app.use(express.json());
 
+app.get('/hello', async (req, res) => {
+    try {
+        res.send(200).send('Hello World!');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
 // Endpoint to submit Spark job
 app.post('/submit-job', async (req, res) => {
   try {
